@@ -1,6 +1,24 @@
 {
   "name": "ng-advanced-search",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "description": "A search field with advaned options for Angular",
+  "author": {
+    "name": "Balazs Laczko",
+    "email": "laczbali@gmail.com",
+    "url": "https://blaczko.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/laczbali/NgSearchLib"
+  },
+  "keywords": [
+    "angular",
+    "material",
+    "search",
+    "field",
+    "advanced"
+  ],
+
   "peerDependencies": {
     "@angular/common": "^9.0.7",
     "@angular/core": "^9.0.7",

@@ -11,6 +11,15 @@
             }
         },
         {
+            // Publish the ng-advanced-search library to npm
+            "label": "{ publish-lib }",
+            "command": "npm publish",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}\\dist\\ng-advanced-search"
+            }
+        },
+        {
             // Build the ng-advanced-search library
             "label": "{ build-lib-prod }",
             "command": "ng build NgAdvancedSearch --prod",

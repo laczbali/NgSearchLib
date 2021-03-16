@@ -1,6 +1,24 @@
 {
   "name": "ng-search-lib",
   "version": "0.0.0",
+  "description": "A search field with advaned options for Angular",
+  "author": {
+    "name": "Balazs Laczko",
+    "email": "laczbali@gmail.com",
+    "url": "https://blaczko.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/laczbali/NgSearchLib"
+  },
+  "keywords": [
+    "angular",
+    "material",
+    "search",
+    "field",
+    "advanced"
+  ],
+
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
