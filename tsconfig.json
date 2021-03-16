@@ -16,10 +16,8 @@
       "dom"
     ],
     "paths": {
-      "ng-advanced-search": [
-        "dist/ng-advanced-search/ng-advanced-search",
-        "dist/ng-advanced-search"
-      ]
+      "ng-advanced-search": ["projects/ng-advanced-search/src"],
+      "ng-advanced-search/*": ["projects/ng-advanced-search/src/*"]
     }
   },
   "angularCompilerOptions": {

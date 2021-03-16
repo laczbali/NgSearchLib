@@ -3,16 +3,33 @@
 2. Generate library with `ng g library [libname]`
 3. Implement
 4. Build `ng build [libname]`
-5. Import in sample app (add the lib **module** to the imports in `app.module`, just as any other)
-6. Link to sample app (to allow `--watch`)
-   1. `cd` to `dist\[libname]`
-   2. Run `npm link`
-   3. `cd` to `root`
-   4. Run `npm link`
-7. Run in `--watch` mode
-   1. Run the library with `ng build [libname] --watch`
-   2. Run the sample app with `ng serve`
-8. Publish
+5. Set up import
+   1. Create `index.ts` in `projects\[libname]\src`, with the content: `export * from './public-api';`
+   2. Add the following to `tsconfig.json\compilerOptions`:
+   ```json
+   "paths": {
+      "[libname]": ["projects/[libname]/src"],
+      "[libname]/*": ["projects/[libname]/src/*"]
+    }
+   ```
+   3. Add the following to `tsconfig.app.json\compilerOptions`:
+   ```json
+   "baseUrl": "./",
+   "paths": {
+      "[libname]": ["projects/[libname]/src"],
+      "[libname]/*": ["projects/[libname]/src/*"]
+    }
+   ```
+   4. Add the following to `tsconfig.app.json`:
+   ```json
+   "exclude": [
+    "test.ts",
+    "**/*.spec.ts"
+   ]
+   ```
+   5. Import in sample app (add the lib **module** to the imports in `app.module` from **projcets**)
+6. **Run the app with `ng serve`**
+7. **Publish**
    1. Increment version number in `package.json`
    2. Build in prod mode `ng build [libname] --prod`
    3. `cd` to `dist\[libname]`

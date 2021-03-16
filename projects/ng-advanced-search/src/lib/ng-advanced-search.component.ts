@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lib-NgAdvancedSearch',
-  template: `
-    <p>
-      ng-advanced-search works!
-    </p>
-  `,
+  selector: 'ng-advanced-search',
+  templateUrl: './ng-advanced-search.component.html',
   styles: []
 })
 export class NgAdvancedSearchComponent implements OnInit {
@@ -14,7 +10,7 @@ export class NgAdvancedSearchComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log('test2');
+    console.log('lib component works');
   }
 
 }
