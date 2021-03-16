@@ -1,0 +1,91 @@
+@import './styles.scss';
+
+.container {
+    max-width: 100%;
+    margin: 10px;
+    padding: 0;
+}
+
+.search-container {
+    margin-left: 0;
+}
+
+.basic-container {
+    width: 50%;
+}
+
+.advanced-container {
+    margin-left: -15px;
+}
+
+.search-col {
+    padding-left: 0;
+}
+
+.form-field {
+    width: 100%;
+}
+
+.input-button {
+    border: none;
+    background: none;
+}
+
+.advanced-search-col {
+    cursor: pointer;
+    color: $primary;
+}
+
+.advanced-search-field {
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+    margin-top: -.75rem;
+}
+.advanced-search-field:first-of-type {
+    padding-left: 0;
+}
+
+.advanced-search-term {
+}
+
+.advanced-search-negate{
+    cursor: pointer;
+    width: 60px;
+}
+
+.advanced-search-negate-label {
+    width: 100%;
+    text-align: center;
+    color: $primary;
+    margin-bottom: -4px;
+}
+
+.advanced-search-link-display {
+    cursor: pointer;
+    color: $primary;
+    max-width: 30px;
+    padding: 0;
+    margin-left: 15px;
+    margin-right: 1.35rem;
+    margin-top: 1.35rem;
+    margin-bottom: 1.35rem;
+    border-right: 1px solid $primary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.advanced-search-newrow {
+    cursor: pointer;
+    color: $primary;
+    padding-left: 0;
+    margin-bottom: 1.35rem;
+}
+
+.advanced-search-delrow {
+    cursor: pointer;
+    color: $danger;
+    margin-bottom: -4px;
+}
