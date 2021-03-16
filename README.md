@@ -27,7 +27,7 @@
     "**/*.spec.ts"
    ]
    ```
-   5. Import in sample app (add the lib **module** to the imports in `app.module` from **projcets**)
+   5. Import in Tester app (add the lib **module** to the imports in `app.module` from **projcets**)
 6. **Run the app with `ng serve`**
 7. **Publish**
    1. Increment version number in `package.json`

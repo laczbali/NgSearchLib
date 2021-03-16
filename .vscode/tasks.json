@@ -29,16 +29,7 @@
             }
         },
         {
-            // Build the ng-advanced-search library in watch mode
-            "label": "{ watch-lib }",
-            "command": "ng build NgAdvancedSearch --watch",
-            "type": "shell",
-            "options": {
-                "cwd": "${workspaceFolder}"
-            }
-        },
-        {
-            // Start the sample app in watch mode
+            // Start the Tester app in watch mode
             "label": "{ start-app }",
             "command": "ng serve",
             "type": "shell",

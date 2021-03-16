@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { NgAdvancedSearchModule } from 'ng-advanced-search';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { NgAdvancedSearchModule } from 'ng-advanced-search';
   ],
   imports: [
     BrowserModule,
-    NgAdvancedSearchModule
+    NgAdvancedSearchModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
