@@ -14,10 +14,17 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ng-advanced-search": [
+        "dist/ng-advanced-search/ng-advanced-search",
+        "dist/ng-advanced-search"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
+    "strictInjectionParameters": true,
+    "enableIvy": false
   }
 }

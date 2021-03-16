@@ -123,6 +123,46 @@
           }
         }
       }
+    },
+    "NgAdvancedSearch": {
+      "projectType": "library",
+      "root": "projects/ng-advanced-search",
+      "sourceRoot": "projects/ng-advanced-search/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ng-advanced-search/tsconfig.lib.json",
+            "project": "projects/ng-advanced-search/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-advanced-search/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-advanced-search/src/test.ts",
+            "tsConfig": "projects/ng-advanced-search/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-advanced-search/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ng-advanced-search/tsconfig.lib.json",
+              "projects/ng-advanced-search/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "NgSearchLib"
 }

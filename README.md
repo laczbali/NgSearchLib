@@ -1,27 +1,13 @@
-# NgSearchLib
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+1. Generate project with `ng new [projname]`
+2. Generate library with `ng g library [libname]`
+3. Implement
+4. Build `ng build [libname]`
+5. Import in sample app (add the lib **module** to the imports in `app.module`, just as any other)
+6. Link to sample app (to allow `--watch`)
+   1. `cd` to `dist\[libname]`
+   2. Run `npm link`
+   3. `cd` to `root`
+   4. Run `npm link`
+7. Run in `--watch` mode
+   1. Run the library with `ng build [libname] --watch`
+   2. Run the sample app with `ng serve`
