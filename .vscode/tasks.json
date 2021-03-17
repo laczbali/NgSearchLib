@@ -20,6 +20,15 @@
             }
         },
         {
+            // Publish the ng-advanced-search library to npm
+            "label": "{ version-increment }",
+            "command": "npm version ${input:versionType} --no-git-tag-version",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}\\${input:projectLoc}"
+            }
+        },
+        {
             // Build the ng-advanced-search library
             "label": "{ build-lib-prod }",
             "command": "ng build NgAdvancedSearch --prod",
@@ -37,5 +46,21 @@
                 "cwd": "${workspaceFolder}"
             }
         },
+    ],
+
+    "inputs": [
+        {
+            "id": "projectLoc",
+            "type": "pickString",
+            "description": "Project to increment version for",
+            "options": [ ".", "projects\\ng-advanced-search"]
+        },
+        {
+            "id": "versionType",
+            "type": "pickString",
+            "description": "Type of version change",
+            "options": [ "patch", "minor", "major"],
+            "default": "patch"
+        }
     ]
 }

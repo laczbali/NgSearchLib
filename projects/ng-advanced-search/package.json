@@ -1,7 +1,7 @@
 {
   "name": "ng-advanced-search",
-  "version": "0.0.2",
-  "description": "A search field with advaned options for Angular, with Angular Material components",
+  "version": "0.0.3",
+  "description": "A search field with advaned options. Made for Angular, with Angular Material components.",
   "author": {
     "name": "Balazs Laczko",
     "email": "laczbali@gmail.com",
@@ -28,6 +28,5 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.2",
     "bootstrap": "^4.6.0"
-
   }
 }

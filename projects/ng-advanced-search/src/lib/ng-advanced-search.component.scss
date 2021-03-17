@@ -8,14 +8,18 @@
 
 .search-container {
     margin-left: 0;
+    margin-right: 15px;
 }
 
-.basic-container {
-    width: 50%;
+.content-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .advanced-container {
     margin-left: -15px;
+    margin-right: 0;
 }
 
 .search-col {
@@ -34,32 +38,8 @@
 .advanced-search-col {
     cursor: pointer;
     color: $primary;
-}
-
-.advanced-search-field {
-    padding-left: 10px;
-    padding-right: 10px;
     display: flex;
     align-items: center;
-    margin-top: -.75rem;
-}
-.advanced-search-field:first-of-type {
-    padding-left: 0;
-}
-
-.advanced-search-term {
-}
-
-.advanced-search-negate{
-    cursor: pointer;
-    width: 60px;
-}
-
-.advanced-search-negate-label {
-    width: 100%;
-    text-align: center;
-    color: $primary;
-    margin-bottom: -4px;
 }
 
 .advanced-search-link-display {
@@ -77,15 +57,67 @@
     align-items: center;
 }
 
-.advanced-search-newrow {
-    cursor: pointer;
-    color: $primary;
+.advanced-termrow-container {
     padding-left: 0;
-    margin-bottom: 1.35rem;
+    margin-left: -15px;
+}
+
+.advanced-search-termrow {
+    margin-left: 0;
+    margin-right: 0;
+    align-items: baseline;
+}
+
+.advanced-search-field {
+    // padding-left: 10px;
+    // padding-right: 10px;
+    display: flex;
+    align-items: center;
+    margin-top: -.75rem;
+}
+.advanced-search-field:first-of-type {
+    // padding-left: 0;
+}
+
+// .advanced-search-term {
+// }
+
+.advanced-search-column {
+    max-width: 160px;
+    min-width: 160px;
+}
+
+.advanced-search-negate{
+    cursor: pointer;
+    max-width: 60px;
+    min-width: 60px;
+}
+
+.advanced-search-negate-label {
+    width: 100%;
+    text-align: center;
+    color: $primary;
+    margin-bottom: -4px;
+}
+
+.advanced-search-crit {
+    max-width: 135px;
+    min-width: 135px;
 }
 
 .advanced-search-delrow {
     cursor: pointer;
+    max-width: 100px;
+    min-width: 100px;
     color: $danger;
-    margin-bottom: -4px;
+    // margin-bottom: -4px;
+    height: 50px;
+}
+
+.advanced-search-newrow {
+    cursor: pointer;
+    color: $primary;
+    // padding-left: 0;
+    margin-bottom: 1.35rem;
+    min-width: 150px;
 }
