@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" #container>
 
     <!-- Basic search field, advanced-toggler-button, outside content -->
     <div class="row search-container basic-container">
@@ -45,7 +45,8 @@
     </div>
 
     <!-- Advanced search -->
-    <div class="row search-container advanced-container" *ngIf="searchTerm.searchMode === 'advanced'">
+    <div class="row search-container advanced-container" *ngIf="searchTerm.searchMode === 'advanced'"
+        [@inOutAnimation]="{value: '',params: {maxHeight: advancedFieldHeight}}">
 
         <!-- Search link toggle -->
         <div class="col advanced-search-link-display" (click)="toggleAdvancedLink()" matRipple>
