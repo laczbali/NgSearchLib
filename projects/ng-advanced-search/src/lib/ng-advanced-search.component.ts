@@ -8,28 +8,28 @@ import { NgSearchTerm } from './models';
   styleUrls: ['./ng-advanced-search.component.scss'],
   animations: [
     trigger(
-      'inOutAnimation', 
+      'inOutAnimation',
       [
         transition(
-          ':enter', 
+          ':enter',
           [
             style({ height: 0, opacity: 0 }),
-            animate('0.4s ease-out', 
-                    style({ height: "{{maxHeight}}px", opacity: 1 }))
+            animate('0.4s ease-out',
+              style({ height: "{{maxHeight}}px", opacity: 1 }))
           ],
           {
-            params: { maxHeight: 0}
+            params: { maxHeight: 0 }
           }
         ),
         transition(
-          ':leave', 
+          ':leave',
           [
             style({ height: "{{maxHeight}}px", opacity: 1 }),
-            animate('0.4s ease-in', 
-                    style({ height: 0, opacity: 0 }))
+            animate('0.4s ease-in',
+              style({ height: 0, opacity: 0 }))
           ],
           {
-            params: { maxHeight: 0}
+            params: { maxHeight: 0 }
           }
         )
       ]
@@ -50,11 +50,11 @@ export class NgAdvancedSearchComponent implements OnInit {
   };
 
   advancedTermCounter = 1;
-  
+
   @ViewChild('container') container: ElementRef<HTMLElement>;
-  public get advancedFieldHeight() : number {
+  public get advancedFieldHeight(): number {
     let val = 0;
-    
+
     // New term row, constant
     val += 45;
 
@@ -67,7 +67,7 @@ export class NgAdvancedSearchComponent implements OnInit {
 
     return val;
   }
-  
+
 
   ngOnInit(): void {
     console.log('lib component works');
