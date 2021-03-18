@@ -2,8 +2,7 @@
 
 .container {
     max-width: 100%;
-    margin: 10px;
-    padding: 0;
+    padding: 10px;
 }
 
 .search-container {
@@ -83,8 +82,9 @@
 
 .advanced-search-negate{
     cursor: pointer;
-    max-width: 42px;
-    min-width: 42px;
+    max-width: 70px;
+    min-width: 70px;
+    height: 60px;
 }
 
 .advanced-search-negate-label {
@@ -95,8 +95,12 @@
 }
 
 .advanced-search-crit {
-    max-width: 135px;
-    min-width: 135px;
+    max-width: 138px;
+    min-width: 138px;
+}
+
+.advanced-search-term {
+    max-width: 375px;
 }
 
 .advanced-search-delrow {

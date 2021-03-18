@@ -13,9 +13,9 @@
                     <mat-form-field class="form-field">
                         <mat-label>{{simpleFieldLabel}}</mat-label>
                         <input matInput type="text" [(ngModel)]="searchTerm.simpleSearchTerm"
-                            [disabled]="searchTerm.searchMode !== 'simple'">
+                            (keyup)="this.outputUpdate()" [disabled]="searchTerm.searchMode !== 'simple'">
                         <button class="input-button" *ngIf="searchTerm.simpleSearchTerm" matSuffix aria-label="Clear"
-                            (click)="searchTerm.simpleSearchTerm=''">
+                            (click)="clearBasicTerm()">
                             <i class="fas fa-times"></i>
                         </button>
                     </mat-form-field>
@@ -63,15 +63,14 @@
                     <mat-form-field appearance="standard" class="form-field">
                         <mat-label>Column</mat-label>
                         <mat-select [(value)]="term.fieldName" (valueChange)="updateTermField(term)">
-                            <!-- <mat-option [value]="header.id" *ngFor="let header of headers">
-                                {{header.display}}
-                            </mat-option> -->
+                            <mat-option [value]="header.id" *ngFor="let header of headers">
+                                {{header.displayText}}
+                            </mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
 
-                <div class="col advanced-search-field advanced-search-negate" (click)="term.isNegated = !term.isNegated"
-                    matRipple>
+                <div class="col advanced-search-field advanced-search-negate" (click)="termNegate(term)" matRipple>
                     <span class="advanced-search-negate-label" *ngIf="!term.isNegated">is</span>
                     <span class="advanced-search-negate-label" *ngIf="term.isNegated">is not</span>
                 </div>
@@ -79,7 +78,7 @@
                 <div class="col advanced-search-field advanced-search-crit">
                     <mat-form-field appearance="standard" class="form-field">
                         <mat-label>Criteria</mat-label>
-                        <mat-select [(value)]="term.action">
+                        <mat-select [(value)]="term.action" (valueChange)="this.outputUpdate()">
                             <mat-option [value]="'contains'">containing</mat-option>
                             <mat-option [value]="'equals'">equal</mat-option>
                             <mat-option [value]="'larger than'">larger than</mat-option>
@@ -91,7 +90,7 @@
                 <div class="col advanced-search-field advanced-search-term">
                     <mat-form-field class="form-field" appearance="standard">
                         <mat-label>Search term</mat-label>
-                        <input matInput type="text" [(ngModel)]="term.searchTerm">
+                        <input matInput type="text" [(ngModel)]="term.searchTerm" (keyup)="this.outputUpdate()">
                     </mat-form-field>
                 </div>
 
