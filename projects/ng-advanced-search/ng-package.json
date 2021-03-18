@@ -3,5 +3,9 @@
   "dest": "../../dist/ng-advanced-search",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": [
+    "@fortawesome/fontawesome-free",
+    "bootstrap"
+  ]
 }
