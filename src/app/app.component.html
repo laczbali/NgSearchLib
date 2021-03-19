@@ -5,12 +5,15 @@
   </div>
 
   <div class="search">
+
+    <!-- The Component -->
     <ng-advanced-search [headers]="headers" [inputArray]="people" (outputArray)="displayPeople = $event">
       <div>
         <button class="btn btn-sm btn-primary m-2" (click)="showNickName = !showNickName">Toggle nickname col</button>
         <button class="btn btn-sm btn-primary m-2" (click)="showWeight = !showWeight">Toggle weight col</button>
       </div>
     </ng-advanced-search>
+
   </div>
 
   <div class="content">

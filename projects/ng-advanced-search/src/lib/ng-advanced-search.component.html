@@ -61,7 +61,7 @@
 
                 <div class="col advanced-search-field advanced-search-column">
                     <mat-form-field appearance="standard" class="form-field">
-                        <mat-label>Column</mat-label>
+                        <mat-label>Field</mat-label>
                         <mat-select [(value)]="term.fieldName" (valueChange)="updateTermField(term)">
                             <mat-option [value]="header.id" *ngFor="let header of headers">
                                 {{header.displayText}}
