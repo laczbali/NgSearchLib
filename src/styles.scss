@@ -1,5 +1,9 @@
 // Import bootstrap
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 
+:root {
+    --ngas-primary-color: rgb(0, 157, 219);
+}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

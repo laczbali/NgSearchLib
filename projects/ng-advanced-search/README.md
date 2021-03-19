@@ -73,6 +73,15 @@ Add the component to your template:
 | selectedTerm | NgAsSearchTerm  | Search term applied by user |
 | outputArray  | any[ ]          | If an input array was provided, this will have the search term applied to it
 
+### Styling
+The input fileds are Angular Material components, refer to that documentation for styling.
+The rest of the components use a single color, which can be overriden by inculding this in your `styles.scss`:
+```css
+:root {
+    --ngas-primary-color: [your-color-here];
+}
+```
+
 ### Types
 ```typescript
 export interface NgAsSearchTerm {

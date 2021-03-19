@@ -52,7 +52,7 @@
 // Main column for advance search toggle
 .advanced-search-col {
     cursor: pointer;
-    color: $primary;
+    color: $ngas-primary;
     display: flex;
     align-items: center;
 }
@@ -70,14 +70,14 @@
 // Toggle for advanced term link (AND / OR )
 .advanced-search-link-display {
     cursor: pointer;
-    color: $primary;
+    color: $ngas-primary;
     max-width: 30px;
     padding: 0;
     margin-left: 15px;
     margin-right: 1.35rem;
     margin-top: 1.35rem;
     margin-bottom: 1.35rem;
-    border-right: 1px solid $primary;
+    border-right: 1px solid $ngas-primary;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -106,7 +106,7 @@
 // Link for adding new adv term
 .advanced-search-newrow {
     cursor: pointer;
-    color: $primary;
+    color: $ngas-primary;
     margin-bottom: 1.35rem;
     min-width: 150px;
 }
@@ -133,7 +133,7 @@
 .advanced-search-negate-label {
     width: 100%;
     text-align: center;
-    color: $primary;
+    color: $ngas-primary;
     margin-bottom: -4px;
 }
 
