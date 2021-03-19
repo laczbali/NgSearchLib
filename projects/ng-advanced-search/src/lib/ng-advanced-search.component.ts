@@ -38,6 +38,7 @@ import { NgAsAdvancedSearchTerm, NgAsHeader, NgAsSearchTerm } from './models';
 })
 export class NgAdvancedSearchComponent implements OnInit {
 
+  // TODO come up with a different way of getting the term height
   // TODO handle header types (especially dates)
 
   // ***********************************************************************************************************
