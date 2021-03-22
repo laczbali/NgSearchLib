@@ -1,8 +1,12 @@
 // Import bootstrap
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 
+// Import fontawesome
+@import '../node_modules/@fortawesome/fontawesome-free/css/all.min.css';
+
 :root {
     --ngas-primary-color: rgb(0, 157, 219);
+    --ngas-danger-color: rgb(255, 0, 255);
 }
 
 html, body { height: 100%; }

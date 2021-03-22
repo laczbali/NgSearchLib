@@ -19,9 +19,11 @@
   <div class="content">
     <div style="margin-bottom: 15px; margin-top: 15px;">
       <button class="btn btn-sm btn-success mr-2" [disabled]="reservePoeple.length===0" (click)="addPerson()">
+        <i class="fas fa-plus"></i>
         Add person
       </button>
       <button class="btn btn-sm btn-warning" [disabled]="people.length===0" (click)="removePerson()">
+        <i class="fas fa-ban"></i>
         Remove person
       </button>
     </div>

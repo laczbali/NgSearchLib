@@ -47,6 +47,13 @@ import { NgAdvancedSearchModule } from 'ng-advanced-search';
    ],
 ```
 
+### Include dependency stylesheets
+Add these lines to your `styles.scss`:
+```css
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+@import '../node_modules/@fortawesome/fontawesome-free/css/all.min.css';
+```
+
 ### Use
 Add the component to your template:
 ```html
@@ -75,10 +82,11 @@ Add the component to your template:
 
 ### Styling
 The input fileds are Angular Material components, refer to that documentation for styling.
-The rest of the components use a single color, which can be overriden by inculding this in your `styles.scss`:
+The rest of the components use two colors, which can be overriden by inculding this in your `styles.scss`:
 ```css
 :root {
     --ngas-primary-color: [your-color-here];
+    --ngas-danger-color: [your-color-here];
 }
 ```
 

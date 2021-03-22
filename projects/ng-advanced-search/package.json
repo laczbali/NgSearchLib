@@ -1,6 +1,6 @@
 {
   "name": "ng-advanced-search",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A search field with advaned options. Made for Angular, with Angular Material components.",
   "author": {
     "name": "Balazs Laczko",

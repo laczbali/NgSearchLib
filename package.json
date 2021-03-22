@@ -1,6 +1,6 @@
 {
   "name": "ng-search-lib",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A search field with advaned options for Angular",
   "author": {
     "name": "Balazs Laczko",
@@ -38,6 +38,7 @@
     "@angular/platform-browser": "~9.0.6",
     "@angular/platform-browser-dynamic": "~9.0.6",
     "@angular/router": "~9.0.6",
+    "@fortawesome/fontawesome-free": "^5.15.3",
     "bootstrap": "^4.6.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
