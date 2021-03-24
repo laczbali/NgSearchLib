@@ -198,6 +198,8 @@ export class NgAdvancedSearchComponent implements OnInit {
 
   /** Test an advanced rule on an item */
   advancedTermPassed(item: any, term: NgAsAdvancedSearchTerm): boolean {
+    if(term.action === undefined) { return true; }
+
     let rerturnVal: boolean = false;;
 
     const evalValue = String(item[term.fieldName]).toLowerCase();
