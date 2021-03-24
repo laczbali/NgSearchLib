@@ -38,6 +38,15 @@
             }
         },
         {
+            // Build the wrapper app
+            "label": "{ build-app }",
+            "command": "ng build --prod --build-optimizer=false --base-href=/git/ng-advanced-search/",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
             // Start the Tester app in watch mode
             "label": "{ start-app }",
             "command": "ng serve",
