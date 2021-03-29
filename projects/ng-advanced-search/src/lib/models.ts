@@ -5,6 +5,9 @@ export interface NgAsSearchTerm {
     
     advancedSearchLink: 'and' | 'or';
     advancedTerms: NgAsAdvancedSearchTerm[];
+
+    name?: string;
+    isDefault?: boolean;
 }
 
 export interface NgAsAdvancedSearchTerm {

@@ -49,18 +49,52 @@
     padding-left: 0;
 }
 
+// Input field clear button
+.input-button {
+    border: none;
+    background: none;
+}
+
+// Hover effect for mode switch and filter save
+.scale-col {
+    transition: all 0.1s;
+}
+.scale-col:hover {
+    transform: scale(0.9);
+}
+
 // Main column for advance search toggle
 .advanced-search-col {
     cursor: pointer;
     color: $ngas-primary;
     display: flex;
     align-items: center;
+    position: relative;
 }
 
-// Input field clear button
-.input-button {
-    border: none;
-    background: none;
+// The label that show what mode can we switch to
+.advanced-search-col-label {
+    position: absolute;
+    white-space: nowrap;
+    z-index: -10;
+}
+
+// Where we can configure saved filters
+.saved-term-col {
+    cursor: pointer;
+    color: $ngas-primary;
+    display: flex;
+    align-items: center;
+}
+
+.italic-text {
+    font-style: italic;
+    font-weight: 100;
+}
+
+.underline {
+    text-decoration: underline;
+    text-decoration-thickness: from-font;
 }
 
 // ***********************************************************************************************************

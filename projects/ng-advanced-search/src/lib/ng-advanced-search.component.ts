@@ -1,5 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, ElementRef, Input, OnInit, Output, EventEmitter, ViewChild, IterableDiffers } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { FilterSavePopupComponent } from './components/filter-save-popup/filter-save-popup.component';
 import { NgAsAdvancedSearchTerm, NgAsHeader, NgAsSearchTerm } from './models';
 
 @Component({
@@ -8,7 +10,49 @@ import { NgAsAdvancedSearchTerm, NgAsHeader, NgAsSearchTerm } from './models';
   styleUrls: ['./ng-advanced-search.component.scss'],
   animations: [
     trigger(
-      'inOutAnimation',
+      'inOutAnimModelabelAdv',
+      [
+        transition(
+          ':enter',
+          [
+            style({ opacity: 0, transform: 'translateY(40px)' }),
+            animate(400,
+              style({ opacity: 1, transform: 'translateY(0px)' }))
+          ]
+        ),
+        transition(
+          ':leave',
+          [
+            style({ opacity: 1, transform: 'translateY(0px)' }),
+            animate(400,
+              style({ opacity: 0, transform: 'translateY(40px)' }))
+          ]
+        )
+      ]
+    ),
+    trigger(
+      'inOutAnimModelabelBas',
+      [
+        transition(
+          ':enter',
+          [
+            style({ opacity: 0, transform: 'translateY(-40px)' }),
+            animate('0.4s ease-out',
+              style({ opacity: 1, transform: 'translateY(0px)' }))
+          ]
+        ),
+        transition(
+          ':leave',
+          [
+            style({ opacity: 1, transform: 'translateY(0px)' }),
+            animate('0.4s ease-in',
+              style({ opacity: 0, transform: 'translateY(-40px)' }))
+          ]
+        )
+      ]
+    ),
+    trigger(
+      'inOutAnimAdvsearch',
       [
         transition(
           ':enter',
@@ -41,6 +85,14 @@ export class NgAdvancedSearchComponent implements OnInit {
   // TODO come up with a different way of getting the term height
   // TODO handle header types (especially dates)
 
+  constructor(
+    private iterableDiffers: IterableDiffers,
+    public dialog: MatDialog
+  ) {
+    // For array input difference handling
+    this.iterableDiffer = iterableDiffers.find([]).create(null);
+  }
+
   // ***********************************************************************************************************
   // Inputs and outputs
   // ***********************************************************************************************************
@@ -53,6 +105,10 @@ export class NgAdvancedSearchComponent implements OnInit {
   @Input() defaultTerm: NgAsSearchTerm = null;
   /** Array to apply the filters on */
   @Input() inputArray: any[] = null;
+  /** Should the component enable filter saving UI */
+  @Input() showFilterSaving: boolean = false;
+  /** Terms saved by the user previously */
+  @Input() savedFilters: NgAsSearchTerm[] = [];
 
   /** The search term the user set up */
   @Output() selectedTerm = new EventEmitter<NgAsSearchTerm>();
@@ -121,9 +177,6 @@ export class NgAdvancedSearchComponent implements OnInit {
 
   // ngDoCheck fails to detect array element changes by default. The following is a workaround
   iterableDiffer;
-  constructor(private iterableDiffers: IterableDiffers) {
-    this.iterableDiffer = iterableDiffers.find([]).create(null);
-  }
 
   ngDoCheck() {
     let changes = this.iterableDiffer.diff(this.inputArray);
@@ -198,7 +251,7 @@ export class NgAdvancedSearchComponent implements OnInit {
 
   /** Test an advanced rule on an item */
   advancedTermPassed(item: any, term: NgAsAdvancedSearchTerm): boolean {
-    if(term.action === undefined) { return true; }
+    if (term.action === undefined) { return true; }
 
     let rerturnVal: boolean = false;;
 
@@ -291,4 +344,39 @@ export class NgAdvancedSearchComponent implements OnInit {
   updateTermField(term) {
     this.outputUpdate();
   }
+
+  // ***********************************************************************************************************
+  // Filter saving
+  // ***********************************************************************************************************
+
+  loadedFilterName: string = null;
+  loadedFilter: NgAsSearchTerm = null;
+
+  public get loadedFilterChanged(): boolean {
+    return this.areTermsEqual(this.loadedFilter, this.searchTerm);
+  }
+
+  openFilterSavePopup() {
+    this.dialog.open(FilterSavePopupComponent, {
+      data: this.savedFilters
+    });
+  }
+
+  areTermsEqual(a: NgAsSearchTerm, b: NgAsSearchTerm): boolean {
+    if (a.simpleSearchTerm !== b.simpleSearchTerm) { return false; }
+    if (a.searchMode !== b.searchMode) { return false; }
+    if (a.advancedSearchLink !== b.advancedSearchLink) { return false; }
+    if (a.advancedTerms.length !== b.advancedTerms.length) { return false; }
+    return a.advancedTerms.every((termA, index) => {
+      const termB = b.advancedTerms[index];
+      if (termA.id !== termB.id) { return false; }
+      if (termA.fieldName !== termB.fieldName) { return false; }
+      if (termA.isNegated !== termB.isNegated) { return false; }
+      if (termA.action !== termB.action) { return false; }
+      if (termA.searchTerm !== termB.searchTerm) { return false; }
+      return true;
+    });
+  }
+
+
 }

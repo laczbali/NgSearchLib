@@ -8,7 +8,7 @@
             <div class="row">
 
                 <!-- Basic search -->
-                <div class="col-xl-8 search-col">
+                <div class="col-xl-6 search-col">
 
                     <mat-form-field class="form-field">
                         <mat-label>{{simpleFieldLabel}}</mat-label>
@@ -23,15 +23,28 @@
                 </div>
 
                 <!-- Advanced search toggler -->
-                <div class="col-xl-4 search-col advanced-search-col" (click)="toggleSearchMode()">
-                    <ng-container *ngIf="searchTerm.searchMode === 'simple'">
+                <div class="col-xl-3 search-col advanced-search-col scale-col" (click)="toggleSearchMode()">
+                    <span class="advanced-search-col-label" *ngIf="searchTerm.searchMode === 'simple'"
+                        [@inOutAnimModelabelAdv]>
                         <i class="fas fa-chevron-down"></i>&nbsp;
                         Advanced Search
-                    </ng-container>
-                    <ng-container *ngIf="searchTerm.searchMode === 'advanced'">
+                    </span>
+                    <span class="advanced-search-col-label" *ngIf="searchTerm.searchMode === 'advanced'"
+                        [@inOutAnimModelabelBas]>
                         <i class="fas fa-chevron-up"></i>&nbsp;
                         Basic Search
-                    </ng-container>
+                    </span>
+                </div>
+
+                <!-- Filter loading/saving -->
+                <div class="col-xl-3 search-col saved-term-col scale-col" *ngIf="showFilterSaving" (click)="openFilterSavePopup()">
+                    <span *ngIf="loadedFilterName === null" class="italic-text">
+                        <i class="fas fa-filter mr-1"></i>Save filter
+                    </span>
+
+                    <span *ngIf="loadedFilterName !== null" class="underline" [class.italic-text]="loadedFilterChanged">
+                        <i class="fas fa-filter mr-1"></i>{{loadedFilterName}}
+                    </span>
                 </div>
 
             </div>
@@ -46,7 +59,7 @@
 
     <!-- Advanced search -->
     <div class="row search-container advanced-container" *ngIf="searchTerm.searchMode === 'advanced'"
-        [@inOutAnimation]="{value: '',params: {maxHeight: advancedFieldHeight}}">
+        [@inOutAnimAdvsearch]="{value: '',params: {maxHeight: advancedFieldHeight}}">
 
         <!-- Search link toggle -->
         <div class="col advanced-search-link-display" (click)="toggleAdvancedLink()" matRipple>

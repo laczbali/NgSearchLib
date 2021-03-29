@@ -1,0 +1,36 @@
+<div class="popup">
+
+  <div class="header">
+    Save and load filters
+  </div>
+
+  <div class="content container">
+
+    <!-- Load -->
+    <div class="row">
+      <!-- Dropdown -->
+      <div class="col">
+        <mat-form-field appearance="fill">
+          <mat-label>Select filter</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let name of filterNames" [value]="name">
+              {{name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <!-- Load button -->
+      <div class="col">
+
+      </div>
+    </div>
+
+    <!-- Save -->
+    <div class="row">
+
+    </div>
+
+  </div>
+
+</div>
