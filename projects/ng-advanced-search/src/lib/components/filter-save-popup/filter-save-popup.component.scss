@@ -9,3 +9,25 @@
     color: $ngas-highlight-text;
     padding: 10px
 }
+
+.btn-custom-primary {
+    color: $ngas-highlight-text;
+    background-color: $ngas-primary;
+    border-color: $ngas-primary;
+}
+
+.btn-custom-danger {
+    color: $ngas-highlight-text;
+    background-color: $ngas-danger;
+    border-color: $ngas-danger;
+}
+
+.btn-custom-primary:hover {
+    opacity: 0.9;
+}
+
+.flx-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -56,6 +56,24 @@ export class AppComponent {
     advancedTerms: []
   }
 
+  saved: NgAsSearchTerm[] = [
+    {
+      name: 'Mick & Mike',
+      simpleSearchTerm: 'Mi',
+      searchMode: 'simple',
+      advancedSearchLink: 'and',
+      advancedTerms: []
+    },
+    {
+      name: 'No nickname',
+      simpleSearchTerm: 'nick',
+      searchMode: 'simple',
+      advancedSearchLink: 'and',
+      advancedTerms: [],
+      isDefault: true
+    }
+  ];
+
   showNickName = true;
   showWeight = true;
 

@@ -47,6 +47,7 @@
 // Main columns
 .search-col {
     padding-left: 0;
+    min-height: 30px;
 }
 
 // Input field clear button
@@ -55,12 +56,8 @@
     background: none;
 }
 
-// Hover effect for mode switch and filter save
-.scale-col {
-    transition: all 0.1s;
-}
-.scale-col:hover {
-    transform: scale(0.9);
+.search-extra-col:hover {
+    opacity: 0.7;
 }
 
 // Main column for advance search toggle
@@ -70,6 +67,7 @@
     display: flex;
     align-items: center;
     position: relative;
+    white-space: nowrap;
 }
 
 // The label that show what mode can we switch to

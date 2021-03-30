@@ -171,6 +171,14 @@ export class NgAdvancedSearchComponent implements OnInit {
       }
     }
 
+    // If saved terms were provided, check for a default there
+    if(this.savedFilters.length !== 0) {
+      const defFilter = this.savedFilters.find(f => f.isDefault === true);
+      if(defFilter !== undefined) {
+        this.termLoaded(defFilter.name);
+      }
+    }
+
     // Set output
     this.outputUpdate();
   }
@@ -353,16 +361,70 @@ export class NgAdvancedSearchComponent implements OnInit {
   loadedFilter: NgAsSearchTerm = null;
 
   public get loadedFilterChanged(): boolean {
-    return this.areTermsEqual(this.loadedFilter, this.searchTerm);
+    return !this.areTermsEqual(this.loadedFilter, this.searchTerm);
   }
 
   openFilterSavePopup() {
-    this.dialog.open(FilterSavePopupComponent, {
-      data: this.savedFilters
-    });
+    const dRef = this.dialog.open(FilterSavePopupComponent, {
+      data: {
+        filters: this.savedFilters,
+        loadedfilter: this.loadedFilterName,
+        selectedIsValid: !this.loadedFilterChanged
+      }
+    })
+
+    dRef.afterClosed().subscribe(
+      success => {
+        if(success !== undefined) {
+          
+          if(success['selected'] !== undefined) {
+            this.termLoaded(success['selected']);
+          }
+          
+          if(success['deleted'] !== undefined) {
+            this.termDeleted(success['deleted']);
+          }
+
+          if(success['name'] !== undefined) {
+            this.termSaved(success);
+          }
+        }
+      }
+    );;
+  }
+
+  termLoaded(name: string) {
+    this.loadedFilterName = name;
+    this.loadedFilter = this.savedFilters.find(f => f.name === this.loadedFilterName);
+    this.searchTerm = {
+      simpleSearchTerm: this.loadedFilter.simpleSearchTerm,
+      searchMode: this.loadedFilter.searchMode,
+      advancedSearchLink: this.loadedFilter.advancedSearchLink,
+      advancedTerms: this.loadedFilter.advancedTerms.map(t => ({
+        id: t.id,
+        fieldName: t.fieldName,
+        isNegated: t.isNegated,
+        action: t.action,
+        searchTerm: t.searchTerm
+      } as NgAsAdvancedSearchTerm))
+    } as NgAsSearchTerm;
+
+    this.outputUpdate();
+  }
+
+  termSaved(data: {name: string, isDefault: boolean}) {
+    
+  }
+
+  termDeleted(name: string) {
+
   }
 
   areTermsEqual(a: NgAsSearchTerm, b: NgAsSearchTerm): boolean {
+    if (a === null && b !== null) { return false; }
+    if (a !== null && b === null) { return false; }
+    if (a === null && b === null) { return true; }
+
     if (a.simpleSearchTerm !== b.simpleSearchTerm) { return false; }
     if (a.searchMode !== b.searchMode) { return false; }
     if (a.advancedSearchLink !== b.advancedSearchLink) { return false; }

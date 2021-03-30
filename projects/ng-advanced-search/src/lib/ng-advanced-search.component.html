@@ -23,7 +23,7 @@
                 </div>
 
                 <!-- Advanced search toggler -->
-                <div class="col-xl-3 search-col advanced-search-col scale-col" (click)="toggleSearchMode()">
+                <div class="col-xl-3 search-col search-extra-col advanced-search-col" (click)="toggleSearchMode()">
                     <span class="advanced-search-col-label" *ngIf="searchTerm.searchMode === 'simple'"
                         [@inOutAnimModelabelAdv]>
                         <i class="fas fa-chevron-down"></i>&nbsp;
@@ -37,12 +37,12 @@
                 </div>
 
                 <!-- Filter loading/saving -->
-                <div class="col-xl-3 search-col saved-term-col scale-col" *ngIf="showFilterSaving" (click)="openFilterSavePopup()">
-                    <span *ngIf="loadedFilterName === null" class="italic-text">
-                        <i class="fas fa-filter mr-1"></i>Save filter
+                <div class="col-xl-3 search-col search-extra-col saved-term-col" *ngIf="showFilterSaving" (click)="openFilterSavePopup()">
+                    <span *ngIf="loadedFilterName === null" style="white-space: nowrap;" class="italic-text">
+                        <i class="fas fa-filter mr-1"></i>Save or load filter
                     </span>
 
-                    <span *ngIf="loadedFilterName !== null" class="underline" [class.italic-text]="loadedFilterChanged">
+                    <span *ngIf="loadedFilterName !== null" style="white-space: nowrap;" class="underline" [class.italic-text]="loadedFilterChanged">
                         <i class="fas fa-filter mr-1"></i>{{loadedFilterName}}
                     </span>
                 </div>

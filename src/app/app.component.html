@@ -7,7 +7,8 @@
   <div class="search">
 
     <!-- The Component -->
-    <ng-advanced-search [headers]="headers" [inputArray]="people" (outputArray)="displayPeople = $event" [showFilterSaving]="true">
+    <ng-advanced-search [headers]="headers" [inputArray]="people" (outputArray)="displayPeople = $event"
+      [showFilterSaving]="true" [savedFilters]="saved">
       <div>
         <button class="btn btn-sm btn-primary m-2" (click)="showNickName = !showNickName">Toggle nickname col</button>
         <button class="btn btn-sm btn-primary m-2" (click)="showWeight = !showWeight">Toggle weight col</button>

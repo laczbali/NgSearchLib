@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRippleModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatInputModule,
     MatSelectModule,
     MatRippleModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDividerModule
   ],
   exports: [NgAdvancedSearchComponent],
   entryComponents: [
