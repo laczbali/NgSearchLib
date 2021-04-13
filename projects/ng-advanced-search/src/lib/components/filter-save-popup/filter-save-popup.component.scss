@@ -1,7 +1,7 @@
 @import '../../styles.scss';
 
 .popup {
-    margin: -24px;
+    margin: $ngas-popup-margin;
 }
 
 .header {
@@ -30,4 +30,5 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    min-width: unset;
 }
