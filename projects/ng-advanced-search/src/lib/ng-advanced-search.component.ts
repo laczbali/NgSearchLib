@@ -82,6 +82,8 @@ import { NgAsAdvancedSearchTerm, NgAsHeader, NgAsSearchTerm } from './models';
 })
 export class NgAdvancedSearchComponent implements OnInit {
 
+  // TODO update readme
+  // TODO updat example site
   // TODO come up with a different way of getting the term height
   // TODO handle header types (especially dates)
 
@@ -114,6 +116,8 @@ export class NgAdvancedSearchComponent implements OnInit {
   @Output() selectedTerm = new EventEmitter<NgAsSearchTerm>();
   /** The inputArray with the selectedTerm applied */
   @Output() outputArray = new EventEmitter<any[]>();
+  /** The uppdated list of saved terms */
+  @Output() savedFiltersChanged = new EventEmitter<NgAsSearchTerm[]>();
 
   // ***********************************************************************************************************
   // User configured search term
@@ -172,9 +176,15 @@ export class NgAdvancedSearchComponent implements OnInit {
     }
 
     // If saved terms were provided, check for a default there
-    if(this.savedFilters.length !== 0) {
+    if (this.savedFilters.length !== 0) {
+      this.savedFilters.forEach(f => {
+        if (f.advancedTerms.length === 0) {
+          f.advancedTerms.push({ id: 0 });
+        }
+      });
+
       const defFilter = this.savedFilters.find(f => f.isDefault === true);
-      if(defFilter !== undefined) {
+      if (defFilter !== undefined) {
         this.termLoaded(defFilter.name);
       }
     }
@@ -197,6 +207,11 @@ export class NgAdvancedSearchComponent implements OnInit {
   // ***********************************************************************************************************
   // Output handling
   // ***********************************************************************************************************
+
+  /**  */
+  savedTermsChanged() {
+    this.savedFiltersChanged.emit(this.savedFilters);
+  }
 
   /** Term or input changed, update output */
   outputUpdate() {
@@ -375,17 +390,17 @@ export class NgAdvancedSearchComponent implements OnInit {
 
     dRef.afterClosed().subscribe(
       success => {
-        if(success !== undefined) {
-          
-          if(success['selected'] !== undefined) {
+        if (success !== undefined) {
+
+          if (success['selected'] !== undefined) {
             this.termLoaded(success['selected']);
           }
-          
-          if(success['deleted'] !== undefined) {
+
+          if (success['deleted'] !== undefined) {
             this.termDeleted(success['deleted']);
           }
 
-          if(success['name'] !== undefined) {
+          if (success['name'] !== undefined) {
             this.termSaved(success);
           }
         }
@@ -412,12 +427,38 @@ export class NgAdvancedSearchComponent implements OnInit {
     this.outputUpdate();
   }
 
-  termSaved(data: {name: string, isDefault: boolean}) {
-    
+  termSaved(data: { name: string, isDefault: boolean }) {
+    if (data.isDefault === true) {
+      this.savedFilters.filter(f => f.isDefault === true).forEach(f => f.isDefault = false);
+      this.searchTerm.isDefault = true;
+    }
+
+    let existingTerm = this.savedFilters.find(f => f.name === data.name);
+
+    if (existingTerm === undefined) {
+      existingTerm = {} as NgAsSearchTerm;
+      existingTerm.name = data.name
+      this.savedFilters.push(existingTerm);
+    }
+
+    existingTerm.simpleSearchTerm = this.searchTerm.simpleSearchTerm;
+    existingTerm.searchMode = this.searchTerm.searchMode;
+    existingTerm.advancedSearchLink = this.searchTerm.advancedSearchLink;
+    existingTerm.advancedTerms = this.searchTerm.advancedTerms.map(t => t);
+    existingTerm.isDefault = data.isDefault;
+
+    this.savedTermsChanged();
+    this.termLoaded(data.name);
   }
 
   termDeleted(name: string) {
+    this.savedFilters = this.savedFilters.filter(f => f.name !== name);
+    if(this.loadedFilterName === name) {
+      this.loadedFilterName = null;
+      this.loadedFilter = null;
+    }
 
+    this.savedTermsChanged();
   }
 
   areTermsEqual(a: NgAsSearchTerm, b: NgAsSearchTerm): boolean {

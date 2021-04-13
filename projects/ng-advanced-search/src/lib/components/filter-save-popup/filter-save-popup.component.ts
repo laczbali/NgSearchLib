@@ -1,4 +1,4 @@
-import { EventEmitter, Inject, Input, Output } from '@angular/core';
+import { ChangeDetectorRef, EventEmitter, Inject, Input, Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NgAsSearchTerm } from 'ng-advanced-search/lib/models';
@@ -30,9 +30,15 @@ export class FilterSavePopupComponent implements OnInit {
     this.selected = this.data['loadedfilter'];
 
     this.selectedIsValid = this.data['selectedIsValid'];
-    this.newName = this.selected;
+    this.newName = this.selectedIsValid ? this.selected : '';
     this.newNameChanged();
     this.isDefault = this.filters.find(f => f.name === this.selected)?.isDefault;
+  }
+
+  selectChanged() {
+    const selectedFilter = this.filters.find(f => f.name === this.selected);
+    this.newName = selectedFilter.name;
+    this.isDefault = selectedFilter.isDefault;
   }
 
   load() {

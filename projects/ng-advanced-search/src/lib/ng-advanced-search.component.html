@@ -38,12 +38,14 @@
 
                 <!-- Filter loading/saving -->
                 <div class="col-xl-3 search-col search-extra-col saved-term-col" *ngIf="showFilterSaving" (click)="openFilterSavePopup()">
-                    <span *ngIf="loadedFilterName === null" style="white-space: nowrap;" class="italic-text">
+                    <span *ngIf="loadedFilterName === null || (loadedFilter !== null && loadedFilterChanged)" style="white-space: nowrap;" class="italic-text">
                         <i class="fas fa-filter mr-1"></i>Save or load filter
                     </span>
 
-                    <span *ngIf="loadedFilterName !== null" style="white-space: nowrap;" class="underline" [class.italic-text]="loadedFilterChanged">
-                        <i class="fas fa-filter mr-1"></i>{{loadedFilterName}}
+                    <span *ngIf="loadedFilterName !== null && !loadedFilterChanged" style="white-space: nowrap;">
+                        <i class="fas fa-filter mr-1"></i>
+                        <ng-container *ngIf="this.loadedFilter.isDefault">*&nbsp;</ng-container>
+                        <span class="underline" style="white-space: nowrap;">{{loadedFilterName}}</span>
                     </span>
                 </div>
 

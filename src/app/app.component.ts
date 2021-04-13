@@ -29,6 +29,7 @@ export class AppComponent {
     { name: 'Wanda', birthday: new Date(1980, 4, 12), weight: 56, spendings: 0 },
     { name: 'Julia', nickname: 'July', birthday: new Date(1981, 6, 12), weight: 60, spendings: 7619.62 },
     { name: 'Robert', nickname: 'Rob', birthday: new Date(1989, 7, 12), weight: 85, spendings: 6921.678 },
+    { name: 'Nick', birthday: new Date(1987, 3, 2), weight: 77, spendings: 1 },
     { name: 'Bob', birthday: new Date(1997, 5, 12), weight: 84, spendings: null },
     { name: 'Chelsea', birthday: new Date(1991, 2, 12), weight: 59, spendings: 12 },
     { name: 'Amy', birthday: new Date(2002, 6, 12), weight: 57, spendings: 0.79 },
@@ -56,28 +57,40 @@ export class AppComponent {
     advancedTerms: []
   }
 
-  saved: NgAsSearchTerm[] = [
-    {
-      name: 'Mick & Mike',
-      simpleSearchTerm: 'Mi',
-      searchMode: 'simple',
-      advancedSearchLink: 'and',
-      advancedTerms: []
-    },
-    {
-      name: 'No nickname',
-      simpleSearchTerm: 'nick',
-      searchMode: 'simple',
-      advancedSearchLink: 'and',
-      advancedTerms: [],
-      isDefault: true
-    }
-  ];
+  saved: NgAsSearchTerm[] = [];
+  // saved: NgAsSearchTerm[] = [
+  //   {
+  //     name: 'Mick & Mike',
+  //     simpleSearchTerm: '',
+  //     searchMode: 'advanced',
+  //     advancedSearchLink: 'and',
+  //     advancedTerms: [
+  //       {
+  //         id: 0,
+  //         fieldName: 'name',
+  //         action: 'contains',
+  //         searchTerm: 'Mi'
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     name: 'is nick?',
+  //     simpleSearchTerm: 'nick',
+  //     searchMode: 'simple',
+  //     advancedSearchLink: 'and',
+  //     advancedTerms: [],
+  //     isDefault: true
+  //   }
+  // ];
 
   showNickName = true;
   showWeight = true;
 
   ngOnInit() {
+    const savedFilterString = localStorage.getItem('saved-filters');
+    if(savedFilterString !== null) {
+      this.saved = JSON.parse(savedFilterString);
+    }
   }
 
   termChange(newTerm) {
@@ -94,6 +107,10 @@ export class AppComponent {
     this.reservePoeple.push(
       this.people.pop()
     );
+  }
+
+  savedFiltersChanged(event) {
+    localStorage.setItem('saved-filters', JSON.stringify(event));
   }
 
 }
