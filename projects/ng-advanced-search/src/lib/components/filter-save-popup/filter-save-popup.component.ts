@@ -21,7 +21,7 @@ export class FilterSavePopupComponent implements OnInit {
     return this.filters.map(term => term.name);
   }
 
-  selected: string;
+  selected: string = null;
   selectedIsValid: boolean;
   newName: string;
   isDefault: boolean;

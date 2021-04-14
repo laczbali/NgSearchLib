@@ -39,13 +39,13 @@
                 <!-- Filter loading/saving -->
                 <div class="col-xl-3 search-col search-extra-col saved-term-col" *ngIf="showFilterSaving" (click)="openFilterSavePopup()">
                     <span *ngIf="loadedFilterName === null || (loadedFilter !== null && loadedFilterChanged)" style="white-space: nowrap;" class="italic-text">
-                        <i class="fas fa-filter mr-1"></i>Save or load filter
+                        <i class="fas fa-filter mr-1"></i>Save or load search rule
                     </span>
 
                     <span *ngIf="loadedFilterName !== null && !loadedFilterChanged" style="white-space: nowrap;">
                         <i class="fas fa-filter mr-1"></i>
-                        <ng-container *ngIf="this.loadedFilter.isDefault">*&nbsp;</ng-container>
                         <span class="underline" style="white-space: nowrap;">{{loadedFilterName}}</span>
+                        <sup *ngIf="this.loadedFilter.isDefault"><i class="far fa-star"></i></sup>
                     </span>
                 </div>
 
@@ -95,7 +95,7 @@
                         <mat-label>Criteria</mat-label>
                         <mat-select [(value)]="term.action" (valueChange)="this.outputUpdate()">
                             <mat-option [value]="'contains'">containing</mat-option>
-                            <mat-option [value]="'equals'">equal</mat-option>
+                            <mat-option [value]="'equals'">equal to</mat-option>
                             <mat-option [value]="'larger than'">greater than</mat-option>
                             <mat-option [value]="'smaller than'">less than</mat-option>
                         </mat-select>
