@@ -1,5 +1,5 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, ElementRef, Input, OnInit, Output, EventEmitter, ViewChild, IterableDiffers } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, Output, EventEmitter, ViewChild, IterableDiffers, ChangeDetectorRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FilterSavePopupComponent } from './components/filter-save-popup/filter-save-popup.component';
 import { NgAsAdvancedSearchTerm, NgAsHeader, NgAsSearchTerm } from './models';
@@ -89,7 +89,8 @@ export class NgAdvancedSearchComponent implements OnInit {
 
   constructor(
     private iterableDiffers: IterableDiffers,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private cd: ChangeDetectorRef
   ) {
     // For array input difference handling
     this.iterableDiffer = iterableDiffers.find([]).create(null);
@@ -143,6 +144,8 @@ export class NgAdvancedSearchComponent implements OnInit {
 
   /** Current height of the advanced term rows */
   public get advancedFieldHeight(): number {
+    if(this.container === undefined) { return 0; }
+
     let val = 0;
 
     // New term row, constant
@@ -191,6 +194,10 @@ export class NgAdvancedSearchComponent implements OnInit {
 
     // Set output
     this.outputUpdate();
+  }
+
+  ngAfterViewInit() {
+    this.cd.detectChanges();
   }
 
   // ngDoCheck fails to detect array element changes by default. The following is a workaround
