@@ -22,4 +22,5 @@ export interface NgAsAdvancedSearchTerm {
 export interface NgAsHeader {
     id: string;
     displayText: string;
+    type?: 'string' | 'number' | 'date';
 }

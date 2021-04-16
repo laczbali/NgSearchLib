@@ -371,7 +371,14 @@ export class NgAdvancedSearchComponent implements OnInit {
   }
 
   /** An advanced search terms column was changed */
-  updateTermField(term) {
+  updateTermField(term: NgAsAdvancedSearchTerm) {
+    // Populate term type based on header type
+    const header = this.headers.find(h => h.id === term.fieldName);
+
+    if(header.type !== undefined) {      
+      term.fieldType = header.type;
+    }
+
     this.outputUpdate();
   }
 

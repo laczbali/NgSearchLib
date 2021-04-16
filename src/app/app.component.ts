@@ -13,7 +13,7 @@ export class AppComponent {
     { id: 'name', displayText: 'Name' },
     { id: 'nickname', displayText: 'Nickname' },
     { id: 'birthday', displayText: 'Birthday' },
-    { id: 'weight', displayText: 'Weight' },
+    { id: 'weight', displayText: 'Weight', type: 'number' },
     { id: 'spendings', displayText: 'Spendings' },
   ];
 
