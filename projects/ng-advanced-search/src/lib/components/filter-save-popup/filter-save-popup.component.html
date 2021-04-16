@@ -11,7 +11,7 @@
       <!-- Dropdown -->
       <div class="col flx-center">
         <mat-form-field appearance="fill" style="white-space: nowrap; width: 100%;">
-          <mat-label>Select filter</mat-label>
+          <mat-label>Select search rule</mat-label>
           <mat-select [(value)]="selected" (selectionChange)="selectChanged()">
             <mat-option *ngFor="let filter of filters" [value]="filter.name">
               {{filter.name}}
